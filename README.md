@@ -1,18 +1,17 @@
 BiMap is a fixed-size bi-directional flat map.
 
-#### Complexity Remarks:
+Complexity Remarks:
 * complexity for searching a value by a key: O(log(i)), where i is the position of the key in the map.
   it is supposed to always be faster then map at searching a value by a key, and faster or with equal performance
   to unordered_map.
 * complexity for searching a key by a value: O(n), where n is the number of elements in the map.
   notice that if several identical values exist - the smaller key will be returned.
 
-#### General Remarks:
+General Remarks:
 * Since BiMap was designed only fo searching, it can not modify its data, i.e. - once it was created,
   its elements can not be modified (change vale, change key, remove entry).
   
-  
-#### Example usage and perofrmance comparison againt std::map and std::unordered_map:
+Example usage and perofrmance comparison againt std::map and std::unordered_map:
 
 ```c
 // compiled with -O3 optimization)
@@ -30,15 +29,15 @@ for (std::size_t k{}; k < 9; ++k) {
      {
          ExecutionTimer<std::chrono::microseconds> timer;
          for (std::size_t i{}; i < 10'000'000; ++i) {
-             const std::string a0{ Map.GetValueOfKey(1) },
-                               a1{ Map.GetValueOfKey(2) },
-                               a2{ Map.GetValueOfKey(3) },
-                               a8{ Map.GetValueOfKey(8) },
-                               a9{ Map.GetValueOfKey(9) },
-                               a10{ Map.GetValueOfKey(10) },
-                               a16{ Map.GetValueOfKey(16) },
-                               a17{ Map.GetValueOfKey(17) },
-                               a18{ Map.GetValueOfKey(18) };
+             const char a0{ Map.GetValueOfKey(1) },
+                        a1{ Map.GetValueOfKey(2) },
+                        a2{ Map.GetValueOfKey(3) },
+                        a8{ Map.GetValueOfKey(8) },
+                        a9{ Map.GetValueOfKey(9) },
+                        a10{ Map.GetValueOfKey(10) },
+                        a16{ Map.GetValueOfKey(16) },
+                        a17{ Map.GetValueOfKey(17) },
+                        a18{ Map.GetValueOfKey(18) };
              //int key9{ Map.GetKeyOfValue("90") };
          }
      }
@@ -54,15 +53,15 @@ for (std::size_t k{}; k < 9; ++k) {
      {
          ExecutionTimer<std::chrono::microseconds> timer2;
          for (std::size_t i{}; i < 10'000'000; ++i) {
-             const std::string a0{ a[1] },
-                               a1{ a[2] },
-                               a2{ a[3] },
-                               a8{ a[8] },
-                               a9{ a[9] },
-                               a10{ a[10] },
-                               a16{ a[16] },
-                               a17{ a[17] },
-                               a18{ a[18] };
+             const char a0{ a[1] },
+                        a1{ a[2] },
+                        a2{ a[3] },
+                        a8{ a[8] },
+                        a9{ a[9] },
+                        a10{ a[10] },
+                        a16{ a[16] },
+                        a17{ a[17] },
+                        a18{ a[18] };
          }
      }
 
@@ -90,56 +89,58 @@ for (std::size_t k{}; k < 9; ++k) {
      {
          ExecutionTimer<std::chrono::microseconds> timer3;
          for (std::size_t i{}; i < 10'000'000; ++i) {
-             const std::string a0{ b[1] },
-                               a1{ b[2] },
-                               a2{ b[3] },
-                               a8{ b[8] },
-                               a9{ b[9] },
-                               a10{ b[10] },
-                               a16{ b[16] },
-                               a17{ b[17] },
-                               a18{ b[18] };
+             const char a0{ b[1] },
+                        a1{ b[2] },
+                        a2{ b[3] },
+                        a8{ b[8] },
+                        a9{ b[9] },
+                        a10{ b[10] },
+                        a16{ b[16] },
+                        a17{ b[17] },
+                        a18{ b[18] };
          }
      }
 }
 ```
 
-gives the following output:
+output:
+
+
 ```c
 iteration #0
- elapsed: 1194480 (BiMap)
- elapsed: 1567074 (std::map)
- elapsed: 1495310 (std::unordered_map)
+ BiMap elapsed: 443695
+ std::map elapsed: 702471
+ std::unordered_map elapsed: 425264
 iteration #1
- elapsed: 994347  
- elapsed: 1456768
- elapsed: 1488395
+ BiMap elapsed: 316105
+ std::map: 603340
+ std::unordered_map: 334658
 iteration #2
- elapsed: 1020648
- elapsed: 1544358
- elapsed: 1647938
+ BiMap elapsed: 292862
+ std::map: 569295
+ std::unordered_map: 328108
 iteration #3
- elapsed: 1033480
- elapsed: 1466960
- elapsed: 1526326
+ BiMap elapsed: 295401
+ std::map: 572511
+ std::unordered_map: 333907
 iteration #4
- elapsed: 1020267
- elapsed: 1483236
- elapsed: 1468013
+ BiMap elapsed: 291025
+ std::map: 610111
+ std::unordered_map: 326676
 iteration #5
- elapsed: 1002119
- elapsed: 1465379
- elapsed: 1468553
+ BiMap elapsed: 290004
+ std::map: 567296
+ std::unordered_map: 331655
 iteration #6
- elapsed: 996154
- elapsed: 1464884
- elapsed: 1482861
+ BiMap elapsed: 296455
+ std::map: 574306
+ std::unordered_map: 339036
 iteration #7
- elapsed: 994495
- elapsed: 1474427
- elapsed: 1472143
+ BiMap elapsed: 294581
+ std::map: 572326
+ std::unordered_map: 332962
 iteration #8
- elapsed: 989679
- elapsed: 1464057
- elapsed: 1470914
+ BiMap elapsed: 303746
+ std::map: 567782
+ std::unordered_map: 328090
 ```
