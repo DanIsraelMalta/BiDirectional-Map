@@ -1,4 +1,6 @@
 BiMap is a fixed-size bi-directional flat map.
+It is designed purely for the purpose of key/value searching, so once it is created - it can not be modified.
+However, since it is used only for searching - it is quite fast...
 
 Complexity Remarks:
 * complexity for searching a value by a key: O(log(i)), where i is the position of the key in the map.
@@ -6,11 +8,7 @@ Complexity Remarks:
   to unordered_map.
 * complexity for searching a key by a value: O(n), where n is the number of elements in the map.
   notice that if several identical values exist - the smaller key will be returned.
-
-General Remarks:
-* Since BiMap was designed only fo searching, it can not modify its data, i.e. - once it was created,
-  its elements can not be modified (change vale, change key, remove entry).
-  
+ 
 Example usage and perofrmance comparison againt std::map and std::unordered_map:
 
 ```c
