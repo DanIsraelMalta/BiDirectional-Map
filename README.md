@@ -1,4 +1,4 @@
-BiMap is a fixed-size bi-directional static flat map.
+#### BiMap - a fixed-size bi-directional static flat map.
 
 Complexity Remarks:
 * complexity for searching a value by a key: O(log(i)), where i is the position of the key in the map.
